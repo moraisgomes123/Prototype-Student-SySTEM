@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Attendance | Student Attendance System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-page="attendance">
+  <div id="app-header"></div>
+  <main class="container page-content">
+    <div class="page-heading">
+      <div><p class="eyebrow">MY RECORDS</p><h1>My Attendance</h1>
+      <p class="muted">Review the attendance information recorded for your student account.</p></div>
+    </div>
+    <section class="panel">
+      <div class="section-heading">
+        <div><h2>Attendance records</h2><p class="muted small">Your records are displayed in read-only mode.</p></div>
+        <span id="attendance-total" class="count-chip">0 records</span>
+      </div>
+      <div id="attendance-table" class="table-wrap"></div>
+      <p class="table-note">This record is provided by the institution. Last updated: <time id="last-updated"></time></p>
+    </section>
+    <section class="notice-card">
+      <div class="notice-icon" aria-hidden="true">i</div>
+      <div><h2>Found an incorrect attendance entry?</h2>
+        <p>If a date or attendance status appears incorrect, report the discrepancy. You cannot change the official record yourself.</p>
+        <button class="button button-secondary" type="button" data-open-report>Report an issue</button>
+      </div>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <dialog id="report-dialog" class="dialog" aria-labelledby="report-title">
+    <form id="report-form" method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">STUDENT SUPPORT</p><h2 id="report-title">Report an attendance issue</h2></div>
+        <button class="icon-button" type="button" data-close-dialog aria-label="Close dialog">×</button></div>
+      <p class="muted">Your report will not change the attendance record. The institution must review it.</p>
+      <label for="report-record">Attendance record</label>
+      <select id="report-record" required></select>
+      <label for="report-description">Describe the discrepancy</label>
+      <textarea id="report-description" rows="4" minlength="10" required placeholder="Explain what you believe is incorrect..."></textarea>
+      <p id="report-error" class="form-message error" role="alert"></p>
+      <div class="button-row end">
+        <button class="button button-secondary" type="button" data-close-dialog>Cancel</button>
+        <button class="button button-primary" type="submit">Submit report</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="confirmation-dialog" class="dialog" aria-labelledby="confirmation-title">
+    <div class="success-icon" aria-hidden="true">✓</div>
+    <h2 id="confirmation-title">Report submitted</h2>
+    <p id="confirmation-message">Your discrepancy report has been recorded for this prototype.</p>
+    <p class="muted small">The official attendance record remains unchanged.</p>
+    <button class="button button-primary button-full" type="button" data-close-confirmation>Close</button>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student Attendance System login">
+  <title>Sign in | Student Attendance System</title>
+
+  <style>
+    /* ===== Background picture applied to the whole page ===== */
+    body.auth-page {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+      color: #1d2935;
+      background-image:
+        linear-gradient(rgba(23, 50, 77, 0.72), rgba(16, 38, 59, 0.82)),
+        url("images/images.jpeg");   /* path relative to index.html */
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* ===== Page wrapper centers the card ===== */
+    .auth-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 32px 18px 18px;
+    }
+
+    /* ===== White login card floating over the photo ===== */
+    .auth-card {
+      width: min(470px, 100%);
+      padding: 34px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 18px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    /* ===== Brand badge ===== */
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      border-radius: 12px;
+      background: #eaf2fb;
+      color: #17324d;
+      margin-bottom: 22px;
+    }
+
+    /* ===== Typography ===== */
+    .eyebrow {
+      color: #2463a6;
+      font-size: .73rem;
+      letter-spacing: .12em;
+      font-weight: 800;
+      margin: 0 0 8px;
+    }
+    h1 {
+      font-size: 1.85rem;
+      line-height: 1.2;
+      color: #10263b;
+      margin: 0 0 8px;
+    }
+    .muted { color: #596979; margin: 0 0 0; }
+
+    /* ===== Form fields ===== */
+    .form-group { margin-bottom: 17px; }
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 7px;
+      color: #10263b;
+    }
+    input[type="text"],
+    input[type="password"],
+    input:not([type]) {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid #aebdca;
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px 12px;
+      color: #1d2935;
+      font: inherit;
+      box-sizing: border-box;
+    }
+    input:focus-visible {
+      outline: 3px solid #e49b24;
+      outline-offset: 2px;
+    }
+    .help-text {
+      display: block;
+      color: #596979;
+      margin-top: 5px;
+      font-size: .86rem;
+    }
+
+    /* ===== Error message ===== */
+    .form-message {
+      min-height: 1.4em;
+      margin: 6px 0 10px;
+      color: #596979;
+      font-size: .9rem;
+    }
+    .form-message.error { color: #9b2c2c; font-weight: 700; }
+
+    /* ===== Sign-in button ===== */
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 44px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 16px;
+      text-decoration: none;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .button-primary { color: #fff; background: #2463a6; }
+    .button-primary:hover { background: #194f89; }
+    .button-full { width: 100%; }
+
+    /* ===== Demo box ===== */
+    .demo-box {
+      background: #f2f6fa;
+      border: 1px solid #d9e1e8;
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 20px;
+      font-size: .88rem;
+    }
+    .demo-box strong { color: #10263b; }
+    .demo-box p { margin: 5px 0 0; color: #596979; }
+    code {
+      background: #e5edf5;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #10263b;
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    /* ===== Privacy + footer ===== */
+    .privacy-note {
+      margin: 20px 0 0;
+      text-align: center;
+      color: #596979;
+      font-size: .86rem;
+    }
+    .auth-footer {
+      color: #e6edf4;
+      font-size: .82rem;
+      margin-top: 20px;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ===== Prevent background-attachment jank on phones ===== */
+    @media (max-width: 760px) {
+      body.auth-page { background-attachment: scroll; }
+      .auth-card { padding: 25px 20px; }
+    }
+  </style>
+
+  <script src="js/app.js" defer></script>
+</head>
+<body class="auth-page" data-page="login">
+  <main class="auth-shell">
+    <section class="auth-card" aria-labelledby="login-title">
+      <div class="brand-mark" aria-hidden="true">SA</div>
+      <p class="eyebrow">STUDENT PORTAL</p>
+      <h1 id="login-title">Student Attendance System</h1>
+      <p class="muted">Sign in to view your personal attendance records.</p>
+
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="student-number">Student number</label>
+          <input id="student-number" name="studentNumber" autocomplete="username"
+                 inputmode="numeric" required aria-describedby="student-help login-error">
+          <small id="student-help" class="help-text">Enter your registered student number.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password"
+                 required aria-describedby="login-error">
+        </div>
+
+        <p id="login-error" class="form-message error" role="alert" aria-live="assertive"></p>
+        <button class="button button-primary button-full" type="submit">Sign in</button>
+      </form>
+
+      <div class="demo-box">
+        <strong>Prototype test accounts</strong>
+        <p>Student: <code>ST10467009</code> &nbsp; Password: <code>Student123!</code></p>
+        <p>Second test account: <code>ST10467010</code> &nbsp; Password: <code>Student123!</code></p>
+      </div>
+
+      <p class="privacy-note"><span aria-hidden="true">🔒</span> Your attendance information is private and read-only.</p>
+    </section>
+
+    <footer class="auth-footer">Student Attendance System · Prototype demonstration</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance History | Student Attendance System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-page="history">
+  <div id="app-header"></div>
+  <main class="container page-content">
+    <div class="page-heading">
+      <div><p class="eyebrow">PAST SESSIONS</p><h1>Attendance History</h1>
+      <p class="muted">Use the filters to find a specific module or date range.</p></div>
+    </div>
+    <section class="panel">
+      <h2>Filter attendance records</h2>
+      <form id="filter-form" class="filter-grid">
+        <div class="form-group">
+          <label for="module-filter">Module</label>
+          <select id="module-filter"><option value="">All modules</option></select>
+        </div>
+        <div class="form-group">
+          <label for="start-date">From date</label>
+          <input id="start-date" type="date">
+        </div>
+        <div class="form-group">
+          <label for="end-date">To date</label>
+          <input id="end-date" type="date">
+        </div>
+        <div class="filter-actions">
+          <button class="button button-primary" type="submit">Apply filters</button>
+          <button class="button button-secondary" type="reset" id="clear-filters">Clear</button>
+        </div>
+      </form>
+      <p id="filter-feedback" class="form-message" role="status" aria-live="polite"></p>
+      <div class="section-heading results-heading">
+        <h2>Matching records</h2><span id="history-total" class="count-chip">0 records</span>
+      </div>
+      <div id="history-table" class="table-wrap"></div>
+    </section>
+    <p class="institution-note">Filters only change which records are displayed. They do not edit or delete attendance information.</p>
+  </main>
+  <div id="app-footer"></div>
+</body>
+</html>
